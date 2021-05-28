@@ -1,0 +1,19 @@
+.search-overlay {
+    margin-top: 50px;
+    box-shadow: 0px 2px 3px 0px rgb(0 0 0 / 5%);
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.email {
+    margin-bottom: 6px;
+    ion-label {
+        white-space: pre;
+    }
+    .excerpt {
+        padding-top: 4px;
+    }
+    .date {
+        font-size: small;
+    }
+}

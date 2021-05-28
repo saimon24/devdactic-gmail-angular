@@ -1,9 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>mail</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-item lines="none" class="search-overlay">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-input placeholder="Search in emails"></ion-input>
+    <ion-avatar slot="end" tappable (click)="openAccount($event)">
+      <img src="https://en.gravatar.com/userimage/71535578/a4803efe6592196d7bcda63224972984.jpg" />
+    </ion-avatar>
+  </ion-item>
 
+  <ion-list>
+    <ion-list-header>Inbox</ion-list-header>
+    <ion-item lines="none" *ngFor="let m of emails" class="email">
+      <ion-avatar slot="start">
+        <img src="https://en.gravatar.com/userimage/71535578/a4803efe6592196d7bcda63224972984.jpg" />
+      </ion-avatar>
+      <ion-label color="dark">
+        {{ m.from }}
+        <p class="excerpt">
+          {{ m.content | slice:0:250 }}
+        </p>
+      </ion-label>
+      <div slot="end" class="ion-text-right">
+        <p class="date">{{ m.date | date:'dd. MMM' }}</p>
+        <ion-icon [name]="m.star ? 'star' : 'star-outline'" [color]="m.star ? 'warning' : 'medium'"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
