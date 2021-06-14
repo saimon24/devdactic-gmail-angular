@@ -13,6 +13,10 @@ const routes: Routes = [
         loadChildren: () => import('../mail/mail.module').then(m => m.MailPageModule)
       },
       {
+        path: 'mail/:id',
+        loadChildren: () => import('../details/details.module').then( m => m.DetailsPageModule)
+      },
+      {
         path: 'meet',
         loadChildren: () => import('../meet/meet.module').then(m => m.MeetPageModule)
       },
@@ -29,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TabsPageRoutingModule { }
+export class TabsPageRoutingModule {}

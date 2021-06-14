@@ -11,5 +11,4 @@ export class MeetPage implements OnInit {
 
   ngOnInit() {
   }
-
 }

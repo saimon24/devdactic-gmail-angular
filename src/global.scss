@@ -27,14 +27,14 @@
 
 
 .custom-popover {
-    --ion-backdrop-opacity: 0.6;
+  --ion-backdrop-opacity: 0.6;
 
-    // ion-popover {
-    //     --width: 90%;
-    //     margin: auto;
-    // }
-    .popover-content {
-        left: 10px !important;
-        width: calc(100% - 20px);
-    }
+  .popover-arrow {
+    display: none;
+  }
+
+  .popover-content {
+    left: 10px;
+    width: calc(100% - 10px);
+  }
 }

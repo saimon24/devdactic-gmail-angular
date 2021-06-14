@@ -1,28 +1,52 @@
-<ion-content>
-  <ion-item lines="none" class="search-overlay">
-    <ion-menu-button slot="start"></ion-menu-button>
-    <ion-input placeholder="Search in emails"></ion-input>
-    <ion-avatar slot="end" tappable (click)="openAccount($event)">
-      <img src="https://en.gravatar.com/userimage/71535578/a4803efe6592196d7bcda63224972984.jpg" />
-    </ion-avatar>
-  </ion-item>
+<ion-content scrollEvents="true" [appHideHeader]="search">
+  <div slot="fixed" class="search-overlay ion-align-items-center" #search>
+    <ion-row>
+      <ion-col size="2">
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input placeholder="Search in emails"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-avatar tappable (click)="openAccount($event)">
+          <img src="https://en.gravatar.com/userimage/71535578/a4803efe6592196d7bcda63224972984.jpg" />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
 
   <ion-list>
     <ion-list-header>Inbox</ion-list-header>
-    <ion-item lines="none" *ngFor="let m of emails" class="email">
-      <ion-avatar slot="start">
-        <img src="https://en.gravatar.com/userimage/71535578/a4803efe6592196d7bcda63224972984.jpg" />
-      </ion-avatar>
-      <ion-label color="dark">
-        {{ m.from }}
-        <p class="excerpt">
-          {{ m.content | slice:0:250 }}
-        </p>
-      </ion-label>
-      <div slot="end" class="ion-text-right">
-        <p class="date">{{ m.date | date:'dd. MMM' }}</p>
-        <ion-icon [name]="m.star ? 'star' : 'star-outline'" [color]="m.star ? 'warning' : 'medium'"></ion-icon>
-      </div>
+    
+    <ion-item *ngFor="let m of emails" class="email" lines="none">
+     <ion-row class="ion-align-items-center">
+       <ion-col size="2" (click)="openDetails(m.id)">
+        <div class="email-circle" [style.background]="m.color">
+          {{ m.from | slice:0:1 }}
+        </div>
+       </ion-col>
+       <ion-col size="8" (click)="openDetails(m.id)">
+        <ion-label color="dark" [style.font-weight]="!m.read ? 'bold' : ''" class="ion-text-capitalize ion-text-wrap">
+          {{ m.from.split('@')[0] }}
+          <p class="excerpt">
+            {{ (m.content.length>50)? (m.content | slice:0:50)+'...' : (m.content) }}
+          </p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <div class="ion-text-right" tappable (click)="m.star = !m.star;">
+          <p class="date">{{ m.date | date:'dd. MMM' }}</p>
+          <ion-icon [name]="m.star ? 'star' : 'star-outline'"
+          [color]="m.star ? 'warning' : 'medium'">
+
+          </ion-icon>
+        </div>
+      </ion-col>
+     </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>

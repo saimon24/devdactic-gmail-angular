@@ -8,8 +8,8 @@
     <img src="./assets/logo.png" [style.width]="'70px'">
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
+ 
+<ion-content class="ion-padding">
   <ion-item lines="none">
     <ion-avatar slot="start">
       <img src="https://en.gravatar.com/userimage/71535578/a4803efe6592196d7bcda63224972984.jpg" />
@@ -22,8 +22,17 @@
   <ion-button expand="full" shape="round" fill="outline" color="dark" class="ion-padding">
     Manage your Google Account
   </ion-button>
+ 
+  <ion-item class="ion-margin-top" lines="none">
+    <ion-icon name="person-add-outline" slot="start"></ion-icon>
+    Add another account
+  </ion-item>
+  <ion-item class="ion-margin-bottom" lines="none">
+    <ion-icon name="person-outline" slot="start"></ion-icon>
+    Manage accounts on this device
+  </ion-item>
 </ion-content>
-
+ 
 <ion-footer>
   <ion-toolbar>
     <ion-row>

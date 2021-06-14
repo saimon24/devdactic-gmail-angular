@@ -9,10 +9,9 @@ import { PopoverController } from '@ionic/angular';
 export class AccountPage implements OnInit {
 
   constructor(private popoverCtrl: PopoverController) { }
-
-  ngOnInit() {
-  }
-
+ 
+  ngOnInit() {}
+ 
   close() {
     this.popoverCtrl.dismiss();
   }
